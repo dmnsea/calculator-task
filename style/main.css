@@ -1,7 +1,7 @@
-@import url("/style/external.css");
-@import url("/style/navbar.css");
-@import url("/style/field.css");
-@import url("/style/keyboard.css");
+@import url("./external.css");
+@import url("./navbar.css");
+@import url("./field.css");
+@import url("./keyboard.css");
 
 * {
   padding: 0;
