@@ -1,0 +1,23 @@
+@import url("/style/external.css");
+@import url("/style/navbar.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Comfortaa", serif;
+}
+
+:root{
+  --bg-light: #abcdef;
+  --bg-dark: #012345;
+}
+
+.light-mode {
+  background-color: var(--bg-light);
+  color: var(--bg-dark)
+}
+
+.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--bg-light);
+}

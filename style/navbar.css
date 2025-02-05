@@ -1,0 +1,10 @@
+nav {
+  display: flex;
+  padding: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+nav > h2 {
+  font-weight: 900;
+}
