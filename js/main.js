@@ -1,7 +1,7 @@
 import { addKeyBindings } from "./bindings.js";
-import { setButtonHandlers } from "./buttons.js";
+import { loadTheme } from "./theme.js";
 
 addEventListener("load", () => {
   // addKeyBindings()
-  setButtonHandlers();
+  loadTheme();
 });
