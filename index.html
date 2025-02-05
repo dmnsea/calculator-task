@@ -7,12 +7,49 @@
   <link rel="stylesheet" href="/style/main.css">
   <script src="/js/main.js" type="module"></script>
 </head>
-<body class="light-mode">
-  <nav>
-    <h2>Web Calc</h2>
-    <!-- <span class="material-symbols-rounded">light_mode</span>
-    <span class="material-symbols-rounded">dark_mode</span> -->
-    <span class="material-symbols-rounded">info</span>
+<body class="light">
+  <nav class="light">
+    <h2>Simple Web Calc</h2>
+    <div class="nav-btns">
+      <span id="theme-switcher" class="material-symbols-rounded">dark_mode</span>
+    <span id="info" class="material-symbols-rounded">info</span>
+    </div>
   </nav>
+
+  <main>
+    <section class="field light">
+      <div class="input">1234512345678900987654323456789876543456789</div>
+      <hr class="light">
+      <div class="result">?</div>
+    </section>
+
+    <section class="keyboard light">
+      <button id="delete">DEL</button>
+      <button id="clear">CLR</button>
+      <button id="bracket-open">(</button>
+      <button id="bracket-close">)</button>
+
+      <button id="num-7">7</button>
+      <button id="num-8">8</button>
+      <button id="num-9">9</button>
+      <button id="divide">/</button>
+
+      <button id="num-">4</button>
+      <button id="num-">5</button>
+      <button id="num-">6</button>
+      <button id="mutiply">*</button>
+
+      <button id="num-">1</button>
+      <button id="num-">2</button>
+      <button id="num-">3</button>
+      <button id="subtract">-</button>
+
+      <button id="num-0">0</button>
+      <button id="num-">.</button>
+      <button id="calculate">=</button>
+      <button id="add">+</button>
+      
+    </section>
+  </main>
 </body>
 </html>

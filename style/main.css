@@ -1,23 +1,53 @@
 @import url("/style/external.css");
 @import url("/style/navbar.css");
+@import url("/style/field.css");
+@import url("/style/keyboard.css");
 
 * {
   padding: 0;
   margin: 0;
   font-family: "Comfortaa", serif;
+  box-sizing: border-box;
 }
 
 :root{
   --bg-light: #abcdef;
-  --bg-dark: #012345;
+  --bg-dark: #00152b;
+
+  --font-light: #abcdef;
+  --font-dark: #012345;
+  
+  --navbar-height: 48px;
+  --nav-light: #479ae9;
+  --nav-dark: #012345;
+  
+  --field-light: #ddeeff;
+  --field-dark: #012345;
+
+  --keyboard-height: 312px;
+  --btn-light: #ddeeffcc;
+  --btn-dark: #012345;
 }
 
-.light-mode {
+body.light {
   background-color: var(--bg-light);
   color: var(--bg-dark)
 }
 
-.dark-mode {
+body.dark{
   background-color: var(--bg-dark);
   color: var(--bg-light);
+}
+
+hr.light{
+  border: 1px solid var(--font-dark);
+}
+
+hr.dark{
+  border: 1px solid var(--font-light);
+}
+
+main{
+  max-width: 720px;
+  margin:auto
 }

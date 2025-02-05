@@ -1,0 +1,40 @@
+.field{
+  margin: 16px;
+  padding: 16px;
+  max-height: calc(100vh - var(--navbar-height) - var(--keyboard-height) - 50px);
+
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field.light{
+  background-color: var(--field-light);
+  color: var(--font-dark);
+}
+
+.field.dark{
+  background-color: var(--field-dark);
+  color: var(--font-light);
+}
+
+.field > div {
+  width: 100%;
+  word-wrap: break-word;
+}
+
+.input {
+  font-size: 1.1em;
+}
+
+.result::before{
+  content: "=";
+  padding: 0px 8px;
+}
+
+.result {
+  text-align: right;
+  font-size: 1.3em;
+}
