@@ -24,6 +24,11 @@ function changeTheme(){
 
 export function loadTheme(){
   let switcher = document.querySelector("#theme-switcher");
+  if(!switcher){
+    alert("Missing theme switcher button!");
+    return;
+  }
+  
   switcher.addEventListener("click", changeTheme);
 
   let theme = localStorage.getItem("theme") ?? "light";
