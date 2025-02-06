@@ -25,7 +25,7 @@ export class Storage{
       expression: expr,
       result: res
     });
-    localStorage.setItem("expr_history", JSON.stringify(history));
+    localStorage.setItem("expr_history", JSON.stringify(history.slice(-10)));
   }
 
   static clearHistory(){

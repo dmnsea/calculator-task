@@ -22,6 +22,7 @@
 
 .modal-dialog{
   z-index: 3;
+  width: 80%;
   max-width: 720px;
   max-height: 600px;
   padding: 16px;
@@ -42,7 +43,13 @@
 
 .modal-dialog > p {
   max-height: 480px;
-  overflow-y: scroll;
+  overflow-y: auto;
+}
+
+.modal-dialog .history-item {
+  background-color: var(--field-light);
+  border-radius: 8px;
+  padding: 8px;
 }
 
 .modal-dialog > button:active {

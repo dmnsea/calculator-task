@@ -1,3 +1,5 @@
+import { Storage } from "./storage.js";
+
 function showModalDialog(header, body){
   let main = document.querySelector("main");
 
@@ -49,7 +51,25 @@ JavaScript — требуется разработать систему стек
 }
 
 function showModalHistory(){
+  let header = document.createElement("h2");
+  header.innerText = "History (10 last)";
 
+  let body = document.createElement("p");
+  history = Storage.retrieveHistory();
+  history = history.map(entry => {
+    let el = document.createElement("div");
+    el.innerHTML = `
+<b>Expression</b>:<br>
+${entry.expression}<br>
+<b>Result</b>:<br>
+${entry.result}
+    `.trim();
+    el.classList.add("history-item");
+    return el.outerHTML;
+  });
+  
+  body.innerHTML = history.join("<hr>");
+  showModalDialog(header, body);
 }
 
 export function enableModalDialogs(){
