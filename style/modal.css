@@ -47,9 +47,19 @@
 }
 
 .modal-dialog .history-item {
-  background-color: var(--field-light);
+  /* background-color: var(--field-light); */
   border-radius: 8px;
   padding: 8px;
+}
+
+.modal-dialog .history-item.light {
+  background-color: var(--field-light);
+  color: var(--font-dark);
+}
+
+.modal-dialog .history-item.dark {
+  background-color: var(--field-dark);
+  color: var(--font-light);
 }
 
 .modal-dialog > button:active {

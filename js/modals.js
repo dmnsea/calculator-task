@@ -7,7 +7,7 @@ function showModalDialog(header, body){
   modalBg.classList.add("modal-bg");
 
   let modalDialog = document.createElement("article");
-  modalDialog.classList.add("modal-dialog", "light"); // TODO: add themed dialog
+  modalDialog.classList.add("modal-dialog", Storage.restoreTheme());
 
   let btnClose = document.createElement("button");
   btnClose.innerText = "Close";
@@ -55,20 +55,25 @@ function showModalHistory(){
   header.innerText = "History (10 last)";
 
   let body = document.createElement("p");
-  history = Storage.retrieveHistory();
-  history = history.map(entry => {
-    let el = document.createElement("div");
-    el.innerHTML = `
-<b>Expression</b>:<br>
-${entry.expression}<br>
-<b>Result</b>:<br>
-${entry.result}
-    `.trim();
-    el.classList.add("history-item");
-    return el.outerHTML;
-  });
+  let history = Storage.retrieveHistory();
+  if(history.length > 0){
+    history = history.map(entry => {
+      let el = document.createElement("div");
+      el.innerHTML = `
+  <b>Expression</b>:<br>
+  ${entry.expression}<br>
+  <b>Result</b>:<br>
+  ${entry.result}
+      `.trim();
+
+      el.classList.add("history-item", Storage.restoreTheme());
+      return el.outerHTML;
+    });
+    body.innerHTML = history.join("<hr>");
+  }else{
+    body.innerHTML = "History is empty";
+  }
   
-  body.innerHTML = history.join("<hr>");
   showModalDialog(header, body);
 }
 
