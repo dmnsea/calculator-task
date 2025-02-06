@@ -24,8 +24,7 @@ export function canPressDot(expr){
 }
 
 export function canPressCalc(expr){
-  // TODO:
-  return false;
+  return canDoOperation(expr);
 }
 
 export function canDoOperation(expr){

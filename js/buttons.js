@@ -1,5 +1,6 @@
 import { canPressDigit, canPressDot, canPressCalc, canOpenBracket, canCloseBracket, canDoOperation } from "./utils.js";
 import { Storage } from "./storage.js";
+import { calc } from "./math.js";
 
 export function pressedDel(){
   let expr = document.querySelector(".input");
@@ -19,7 +20,7 @@ export function pressedClear(){
 export function pressedBracketOpen(){
   let expr = document.querySelector(".input");
   if(canOpenBracket(expr.innerHTML)){
-    expr.innerHTML += "(";
+    expr.innerHTML += "( ";
     Storage.saveCurrent(expr.innerHTML);
   }
 }
@@ -27,7 +28,7 @@ export function pressedBracketOpen(){
 export function pressedBracketClose(){
   let expr = document.querySelector(".input");
   if(canCloseBracket(expr.innerHTML)){
-    expr.innerHTML += ")";
+    expr.innerHTML += " )";
     Storage.saveCurrent(expr.innerHTML);
   }
 }
@@ -163,9 +164,8 @@ export function pressedDot(){
 export function pressedCalc(){
   let expr = document.querySelector(".input");
   if(canPressCalc(expr.innerHTML)){
-    // TODO import calculate function
-    let result = "UNKNOWN";
-    // TODO save calculation result to history
+    let result = calc(expr.innerHTML);
+    Storage.addToHistory(expr.innerHTML, result);
     document.querySelector(".result").innerHTML = result;
   }
 }
