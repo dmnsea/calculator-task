@@ -16,7 +16,7 @@ export class Storage{
   }
 
   static retrieveHistory(){
-    return JSON.parse(localStorage.getItem("expr_history") ?? "[]");
+    return JSON.parse(localStorage.getItem("expr_history") ?? "[]").reverse();
   }
 
   static addToHistory(expr, res){

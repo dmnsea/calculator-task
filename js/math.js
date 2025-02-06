@@ -31,29 +31,20 @@ class RPN {
     let opstack = [];
     let postfix = [];
     let expr = this.origin.split(" ");
-    // console.log(`Parts of expression: ${expr}`);
 
     for(let part of expr){
-      // TODO remove logs
-      // console.log();
-      // console.log(`Checking part: ${part}`);
       let pp = RPN.getPriority(part);
-      // console.log(`It's priority: ${pp}`);
       switch(pp){
         // 0 = numbers
         case 0:
-          // console.log("It's number");
-          postfix.push(part);
+          postfix.push(Number.parseFloat(part));
           break;
         // 1 = brackets 
         case 1:
           if(part == "("){
-            // console.log("It's opening bracket");
             opstack.push(part);
           }else{
-            // console.log("It's closing bracket, purging opstack until the opening one");
             while(opstack.slice(-1) != "("){
-              // console.log(opstack);
               postfix.push(opstack.pop());
             }
             opstack.pop();
@@ -65,7 +56,6 @@ class RPN {
         case 2:
         case 3:
         case 4:
-          // console.log("It's operation");
           while(opstack.length > 0 && RPN.getPriority(opstack.slice(-1)) >= RPN.getPriority(part)){
             if(opstack.slice(-1) != "("){
               postfix.push(opstack.pop());
@@ -78,24 +68,54 @@ class RPN {
         default:
           break;
       }
-      // console.log(`finished processing part ${part}`);
-      // console.log(`postfix: ${postfix}`);
-      // console.log(`opstack: ${opstack}`);
-      // console.log("==================================");
     }
 
-    // console.log("Purging opstack");
     while(opstack.length > 0){
       postfix.push(opstack.pop());
     }
-    // console.log("==================================");
 
-//     console.log(`
-// Final result:
-// postfix: ${postfix.join(" ")}
-// opstack: [${opstack.join(", ")}]
-//       `.trim())
     return postfix;
+  }
+
+  calculate(){
+    let postfix = this.makePostfix();
+    let final = [];
+
+    for(let el of postfix){
+      if(typeof(el) === "number"){
+        final.push(el);
+      }else{
+        let second = final.pop();
+        let first = final.pop();
+        let result;
+        switch(el){
+          case "+":
+            result = first + second;
+            break;
+          case "-":
+            result = first - second;
+            break;
+          case "*":
+            result = first * second;
+            break;
+          case "/":
+            result = first / second;
+            break;
+          case "^":
+            result = first ** second;
+            break;
+          default:
+            break;
+        }
+        final.push(result);
+      }
+    }
+
+    if(final.length == 1){
+      return final[0];
+    }else{
+      throw new Error(`Calculation stack has more than 1 element: [${final.join(", ")}]`);
+    }
   }
 }
 
@@ -103,5 +123,9 @@ export function calc(expr){
   let solver = new RPN(expr);
   let postfix = solver.makePostfix();
   console.log(`${expr} => ${postfix.join(" ")}`);
-  return "UNKNOWN";
+  try{
+    return solver.calculate();
+  }catch(e){
+    return e;
+  }
 }
