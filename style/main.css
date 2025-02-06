@@ -2,6 +2,7 @@
 @import url("./navbar.css");
 @import url("./field.css");
 @import url("./keyboard.css");
+@import url("./modal.css");
 
 * {
   padding: 0;

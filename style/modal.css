@@ -1,0 +1,70 @@
+.modal-bg{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #000000aa;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.modal-bg.visible{
+  opacity: 1;
+}
+
+.modal-dialog{
+  z-index: 3;
+  max-width: 720px;
+  max-height: 600px;
+  padding: 16px;
+
+  border-radius: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-dialog > button {
+  font-size: medium;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+}
+
+.modal-dialog > p {
+  max-height: 480px;
+  overflow-y: scroll;
+}
+
+.modal-dialog > button:active {
+  transform: scale(0.95);
+}
+
+.modal-dialog.light{
+  background-color: var(--bg-light);
+  color: var(--font-dark)
+}
+
+.modal-dialog.light > button {
+  background-color: var(--btn-light);
+  color: var(--font-dark);
+}
+
+.modal-dialog.dark{
+  background-color: var(--bg-dark);
+  color: var(--font-light)
+}
+
+.modal-dialog.dark > button {
+  background-color: var(--btn-dark);
+  color: var(--font-light);
+}
