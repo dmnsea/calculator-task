@@ -99,6 +99,9 @@ class RPN {
             result = first * second;
             break;
           case "/":
+            if(second == 0){
+              throw new Error(`Math Error: Division by zero: ${first} / ${second}`);
+            }
             result = first / second;
             break;
           case "^":
@@ -114,7 +117,7 @@ class RPN {
     if(final.length == 1){
       return final[0];
     }else{
-      throw new Error(`Calculation stack has more than 1 element: [${final.join(", ")}]`);
+      throw new Error(`RPN Error: Calculation stack has more than 1 element: [${final.join(", ")}]`);
     }
   }
 }
@@ -126,6 +129,7 @@ export function calc(expr){
   try{
     return solver.calculate();
   }catch(e){
-    return e;
+    console.log(e.message);
+    return e.message;
   }
 }
