@@ -34,7 +34,7 @@
   gap: 8px;
 }
 
-.modal-dialog > button {
+.modal-dialog button {
   font-size: medium;
   padding: 8px;
   border: none;
@@ -47,9 +47,17 @@
 }
 
 .modal-dialog .history-item {
-  /* background-color: var(--field-light); */
   border-radius: 8px;
   padding: 8px;
+}
+
+.modal-dialog hr {
+  width: calc(100% - 14px);
+  margin: auto;
+}
+
+.modal-dialog button:active {
+  transform: scale(0.95);
 }
 
 .modal-dialog .history-item.light {
@@ -62,16 +70,12 @@
   color: var(--font-light);
 }
 
-.modal-dialog > button:active {
-  transform: scale(0.95);
-}
-
 .modal-dialog.light{
   background-color: var(--bg-light);
   color: var(--font-dark)
 }
 
-.modal-dialog.light > button {
+.modal-dialog.light button {
   background-color: var(--btn-light);
   color: var(--font-dark);
 }
@@ -81,7 +85,7 @@
   color: var(--font-light)
 }
 
-.modal-dialog.dark > button {
+.modal-dialog.dark button {
   background-color: var(--btn-dark);
   color: var(--font-light);
 }

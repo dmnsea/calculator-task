@@ -1,6 +1,6 @@
 import { Storage } from "./storage.js";
 
-function showModalDialog(header, body){
+function showModalDialog(header, body, action = null){
   let main = document.querySelector("main");
 
   let modalBg = document.createElement("section");
@@ -13,7 +13,12 @@ function showModalDialog(header, body){
   btnClose.innerText = "Close";
   btnClose.addEventListener("click", closeModal);
 
-  modalDialog.append(header, body, btnClose);
+  modalDialog.append(header, body);
+  if(action != null){
+    modalDialog.appendChild(action);
+  }
+  modalDialog.appendChild(btnClose);
+  
   modalBg.appendChild(modalDialog);
   main.appendChild(modalBg);
 
@@ -55,6 +60,14 @@ function showModalHistory(){
   header.innerText = "History (10 last)";
 
   let body = document.createElement("p");
+  let btnClearHistory = document.createElement("button");
+  btnClearHistory.innerText = "Clear history";
+
+  btnClearHistory.addEventListener("click", () => {
+    Storage.clearHistory();
+    closeModal();
+  })
+
   let history = Storage.retrieveHistory();
   if(history.length > 0){
     history = history.map(entry => {
@@ -69,12 +82,13 @@ function showModalHistory(){
       el.classList.add("history-item", Storage.restoreTheme());
       return el.outerHTML;
     });
+
     body.innerHTML = history.join("<hr>");
+    showModalDialog(header, body, btnClearHistory);
   }else{
     body.innerHTML = "History is empty";
+    showModalDialog(header, body);
   }
-  
-  showModalDialog(header, body);
 }
 
 export function enableModalDialogs(){
