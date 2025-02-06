@@ -1,3 +1,5 @@
+import { Storage } from "./storage.js";
+
 function setDark(){
   document.querySelectorAll(`.light`).forEach(el => {
     el.classList.remove("light");
@@ -7,7 +9,7 @@ function setDark(){
 }
 
 function changeTheme(){
-  let theme = localStorage.getItem("theme") ?? "light";
+  let theme = Storage.restoreTheme();
   let invertedTheme = theme === "light" ? "dark" : "light";
 
   let themed = document.querySelectorAll(`.${theme}`);
@@ -19,7 +21,7 @@ function changeTheme(){
 
   document.querySelector("#theme-switcher").innerHTML = `${invertedTheme}_mode`;
 
-  localStorage.setItem("theme", invertedTheme);
+  Storage.saveTheme(invertedTheme);
 }
 
 export function loadTheme(){
@@ -31,7 +33,7 @@ export function loadTheme(){
   
   switcher.addEventListener("click", changeTheme);
 
-  let theme = localStorage.getItem("theme") ?? "light";
+  let theme = Storage.restoreTheme();
   if(theme == "dark"){
     setDark();
   }

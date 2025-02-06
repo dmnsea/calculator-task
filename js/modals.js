@@ -48,8 +48,15 @@ JavaScript — требуется разработать систему стек
   showModalDialog(header, body);
 }
 
+function showModalHistory(){
+
+}
+
 export function enableModalDialogs(){
-  let info = document.querySelector("#info");
-  info.addEventListener("click", showModalAbout);
+  let btnAbout = document.querySelector("#info");
+  btnAbout.addEventListener("click", showModalAbout);
+
+  let btnHistory = document.querySelector("#btn-history");
+  btnHistory.addEventListener("click", showModalHistory);
 }
 

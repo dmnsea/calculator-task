@@ -8,7 +8,7 @@ function getLastChar(str){
 }
 
 export function canPressDigit(expr){
-  let allowed = ["(", ".", "+", "-", "*", "/", ""];
+  let allowed = ["(", ".", "+", "-", "*", "/", "^", ""];
   let last = getLastChar(expr);
   let prevIsDigit = !!last.match(/\d/);
   return prevIsDigit || allowed.includes(last);
@@ -34,7 +34,7 @@ export function canDoOperation(expr){
 }
 
 export function canOpenBracket(expr){
-  let good = ["+", "-", "/", "*", "(", ""];
+  let good = ["+", "-", "/", "*", "(", "^", ""];
   let last = getLastChar(expr);
   return good.includes(last);
 }
